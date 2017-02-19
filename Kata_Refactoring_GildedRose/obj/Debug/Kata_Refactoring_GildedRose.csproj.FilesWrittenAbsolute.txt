@@ -1,0 +1,9 @@
+/Users/gaeldupire/Projects/Kata_Refactoring_GildedRose/Kata_Refactoring_GildedRose/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/gaeldupire/Projects/Kata_Refactoring_GildedRose/Kata_Refactoring_GildedRose/bin/Debug/nunit.framework.dll
+/Users/gaeldupire/Projects/Kata_Refactoring_GildedRose/Kata_Refactoring_GildedRose/bin/Debug/Kata_Refactoring_GildedRose.dll.mdb
+/Users/gaeldupire/Projects/Kata_Refactoring_GildedRose/Kata_Refactoring_GildedRose/bin/Debug/Kata_Refactoring_GildedRose.dll
+/Users/gaeldupire/Projects/Kata_Refactoring_GildedRose/Kata_Refactoring_GildedRose/obj/Debug/Kata_Refactoring_GildedRose.dll
+/Users/gaeldupire/Projects/Kata_Refactoring_GildedRose/Kata_Refactoring_GildedRose/obj/Debug/Kata_Refactoring_GildedRose.dll.mdb
+/Users/gaeldupire/Projects/Kata_Refactoring_GildedRose/Kata_Refactoring_GildedRose/bin/Debug/ApprovalUtilities.dll
+/Users/gaeldupire/Projects/Kata_Refactoring_GildedRose/Kata_Refactoring_GildedRose/bin/Debug/ApprovalUtilities.Net45.dll
+/Users/gaeldupire/Projects/Kata_Refactoring_GildedRose/Kata_Refactoring_GildedRose/bin/Debug/ApprovalTests.dll

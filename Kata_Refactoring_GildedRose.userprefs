@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{6A572171-188F-4D25-B426-010AC88705D7}|Tests unitaires">
+  <MonoDevelop.Ide.ItemProperties.Kata__Refactoring__GildedRose PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Kata_Refactoring_GildedRose État">
+    <Files>
+      <File FileName="Kata_Refactoring_GildedRose/ApprovalTest.cs" Line="28" Column="2" />
+      <File FileName="Kata_Refactoring_GildedRose/TextTestFixture.cs" Line="8" Column="22" />
+      <File FileName="Kata_Refactoring_GildedRose/GildedRose.cs" Line="75" Column="62" />
+      <File FileName="Kata_Refactoring_GildedRose/GildedRoseTest.cs" Line="11" Column="18" />
+      <File FileName="Kata_Refactoring_GildedRose État" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Kata_Refactoring_GildedRose" expanded="True">
+            <Node name="Kata_Refactoring_GildedRose" expanded="True">
+              <Node name="GildedRose" expanded="True">
+                <Node name="GildedRoseTest" expanded="True" />
+              </Node>
+              <Node name="GildedRoseTests" expanded="True">
+                <Node name="ApprovalTest" expanded="True">
+                  <Node name="ThirtyDays" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
