@@ -26,26 +26,12 @@ namespace GildedRose
 					if (Items[i].Quality < 50)
 					{
 						Items[i].Quality = Items[i].Quality + 1;
-						
-						if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
-						{
-							if (Items[i].SellIn < 11)
-							{
-								if (Items[i].Quality < 50)
-								{
-									Items[i].Quality = Items[i].Quality + 1;
-								}
-							}
-							
-							if (Items[i].SellIn < 6)
-							{
-								if (Items[i].Quality < 50)
-								{
-									Items[i].Quality = Items[i].Quality + 1;
-								}
-							}
-						}
 					}
+
+                    if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
+                    {
+                        UpdateBackstageQuality(Items[i]);
+                    }
 				}
 				
                 // sellin update
@@ -90,7 +76,20 @@ namespace GildedRose
             {
                 item.Quality = item.Quality - 1;
             }
-        }		
+        }
+
+        private void UpdateBackstageQuality(Item item)
+        {
+            if (item.SellIn < 11 && item.Quality < 50)
+            {
+                item.Quality += 1;
+            }
+
+            if (item.SellIn < 6 && item.Quality < 50)
+            {
+                item.Quality += 1;
+            }
+        }
 	}
 	
 	public class Item
