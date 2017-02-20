@@ -14,17 +14,14 @@ namespace GildedRose
 		{
 			for (var i = 0; i < Items.Count; i++)
 			{
-				if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+                // quality updated
+				if (Items[i].Name != "Aged Brie" && 
+                    Items[i].Name != "Backstage passes to a TAFKAL80ETC concert" &&
+                    Items[i].Name != "Sulfuras, Hand of Ragnaros")
 				{
-					if (Items[i].Quality > 0)
-					{
-						if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-						{
-							Items[i].Quality = Items[i].Quality - 1;
-						}
-					}
+                    UpdateQualityOfStandardItem(Items[i]);
 				}
-				else
+                else if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
 				{
 					if (Items[i].Quality < 50)
 					{
@@ -51,6 +48,7 @@ namespace GildedRose
 					}
 				}
 				
+                // sellin update
 				if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
 				{
 					Items[i].SellIn = Items[i].SellIn - 1;
@@ -85,7 +83,14 @@ namespace GildedRose
 				}
 			}
 		}
-		
+
+        private void UpdateQualityOfStandardItem(Item item)
+        {
+            if (item.Quality > 0)
+            {
+                item.Quality = item.Quality - 1;
+            }
+        }		
 	}
 	
 	public class Item
