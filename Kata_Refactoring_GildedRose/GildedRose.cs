@@ -79,12 +79,12 @@ namespace GildedRose
         {
             if (item.SellIn < 11 && item.Quality < 50)
             {
-                item.Quality += 1;
+                AddOneQualityPoint(item);
             }
 
             if (item.SellIn < 6 && item.Quality < 50)
             {
-                item.Quality += 1;
+                AddOneQualityPoint(item);
             }
         }
 
@@ -92,8 +92,13 @@ namespace GildedRose
         {
             if (item.Quality < 50)
             {
-                item.Quality += 1;
+                AddOneQualityPoint(item);
             }
+        }
+
+        private void AddOneQualityPoint(Item item)
+        {
+            item.Quality += 1;
         }
 	}
 	
