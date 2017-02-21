@@ -130,11 +130,7 @@ namespace GildedRose
     {
         public int ComputeQuality(IItem item)
         {
-            if (item.Quality < 50)
-            {
-                return item.Quality + (item.SellIn < 0 ? 2 : 1);
-            }
-            return item.Quality;
+            return item.Quality + (item.SellIn < 0 ? 2 : 1);
         }
     }
 
@@ -147,16 +143,12 @@ namespace GildedRose
                 return 0;
             }
 
-            var temp = item.Quality ;
-            if (item.Quality < 50)
+            var temp = item.Quality + 1;
+            if (item.SellIn < 10)
             {
                 temp += 1;
             }
-            if (item.SellIn < 10 && item.Quality < 50)
-            {
-                temp += 1;
-            }
-            if (item.SellIn < 5 && item.Quality < 50)
+            if (item.SellIn < 5)
             {
                 temp += 1;
             }
