@@ -15,84 +15,8 @@ namespace GildedRose
         {
             for (var i = 0; i < Items.Count; i++)
             {
-                // quality updated
-                if (Items[i].Name != "Aged Brie" &&
-                    Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
-                {
-                    //UpdateQualityOfStandardItem(Items[i]);
-                    Items[i].Update();
-                }
-                else if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    UpdateSpecialButNotLegendaryItem(Items[i]);
-
-                    if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
-                    {
-                        UpdateBackstageQuality(Items[i]);
-                    }
-                }
-
-                // sellin update, diamond never die, neither Sulfuras ;)
-                if (Items[i].Name == "Aged Brie" ||
-                    Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
-                //if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    Items[i].SellIn = Items[i].SellIn - 1;
-                }
-
-                // quality update once again
-                if (Items[i].SellIn < 0)
-                {
-                    if (Items[i].Name != "Aged Brie" &&
-                        Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
-                    {
-                        //UpdateQualityOfStandardItem(Items[i]);
-                    }
-                    else 
-                    if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
-                    {
-                        Items[i].Quality = 0;
-                    }
-                    else if (Items[i].Name == "Aged Brie")
-                    {
-                        UpdateSpecialButNotLegendaryItem(Items[i]);
-                    }
-                }
+                Items[i].Update();
             }
-        }
-
-        private void UpdateQualityOfStandardItem(IItem item)
-        {
-            if (item.Quality > 0)
-            {
-                item.Quality = item.Quality - 1;
-            }
-        }
-
-        private void UpdateBackstageQuality(IItem item)
-        {
-            if (item.SellIn < 11 && item.Quality < 50)
-            {
-                AddOneQualityPoint(item);
-            }
-
-            if (item.SellIn < 6 && item.Quality < 50)
-            {
-                AddOneQualityPoint(item);
-            }
-        }
-
-        private void UpdateSpecialButNotLegendaryItem(IItem item)
-        {
-            if (item.Quality < 50)
-            {
-                AddOneQualityPoint(item);
-            }
-        }
-
-        private void AddOneQualityPoint(IItem item)
-        {
-            item.Quality += 1;
         }
     }
 
@@ -120,15 +44,15 @@ namespace GildedRose
         }
 
         public string Name { get; set; }
-        public int Quality 
-        { 
-            get { return _quality; } 
+        public int Quality
+        {
+            get { return _quality; }
             set
             {
                 _quality = value < 0 ? 0 : value > 50 ? 50 : value;
             }
         }
-        public int SellIn  { get; set; }
+        public int SellIn { get; set; }
 
         public abstract void Update();
 
@@ -139,12 +63,12 @@ namespace GildedRose
     }
 
     public class Item : BaseItem
-	{
+    {
         public Item() { }
 
         public Item(string name, int sellIn, int quality)
             : base(name, sellIn, quality) { }
-        
+
         public override void Update()
         {
             UpdateSellIn();
@@ -163,8 +87,100 @@ namespace GildedRose
 
         public Sulfuras(int sellIn)
             : base("Sulfuras, Hand of Ragnaros", sellIn, 80) { }
-        
+
         public override void Update() { }
+    }
+
+    public interface ISpecialItemToken : IFactory<IQualityUpdater>
+    {
+        string Name { get; }
+    }
+
+    public interface IFactory<out TOut>
+    {
+        TOut Create();
+    }
+
+    public class AgedBrieToken : ISpecialItemToken
+    {
+        public string Name { get { return "Aged Brie"; } }
+
+        IQualityUpdater IFactory<IQualityUpdater>.Create()
+        {
+            return new AgedBrieQualityUpdater();
+        }
+    }
+
+    public class BackstageToken : ISpecialItemToken
+    {
+        public string Name { get { return "Backstage passes to a TAFKAL80ETC concert"; } }
+
+        IQualityUpdater IFactory<IQualityUpdater>.Create()
+        {
+            return new BackstageQualityUpdater();
+        }
+    }
+
+    public interface IQualityUpdater
+    {
+        int ComputeQuality(IItem item);
+    }
+
+    public class AgedBrieQualityUpdater : IQualityUpdater
+    {
+        public int ComputeQuality(IItem item)
+        {
+            if (item.Quality < 50)
+            {
+                return item.Quality + (item.SellIn < 0 ? 2 : 1);
+            }
+            return item.Quality;
+        }
+    }
+
+    public class BackstageQualityUpdater : IQualityUpdater
+    {
+        public int ComputeQuality(IItem item)
+        {
+            if (item.SellIn < 0)
+            {
+                return 0;
+            }
+
+            var temp = item.Quality ;
+            if (item.Quality < 50)
+            {
+                temp += 1;
+            }
+            if (item.SellIn < 10 && item.Quality < 50)
+            {
+                temp += 1;
+            }
+            if (item.SellIn < 5 && item.Quality < 50)
+            {
+                temp += 1;
+            }
+            return temp;
+        }
+    }
+
+    public class SpecialItem : BaseItem
+    {
+        private IQualityUpdater _qualityUpdater;
+
+        public SpecialItem() { }
+
+        public SpecialItem(ISpecialItemToken token, int sellIn, int quality)
+            : base(token.Name, sellIn, quality) 
+        {
+            _qualityUpdater = (token as IFactory<IQualityUpdater>).Create();
+        }
+
+        public override void Update() 
+        {
+            UpdateSellIn();
+            Quality = _qualityUpdater.ComputeQuality(this);
+        }
     }
 
 }

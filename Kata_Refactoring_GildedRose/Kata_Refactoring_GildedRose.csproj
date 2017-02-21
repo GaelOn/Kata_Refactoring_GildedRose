@@ -47,6 +47,7 @@
     <Compile Include="GildedRose.cs" />
     <Compile Include="GildedRoseTest.cs" />
     <Compile Include="TextTestFixture.cs" />
+    <Compile Include="AgedBrieQualityUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

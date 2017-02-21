@@ -32,7 +32,7 @@ namespace GildedRose
         [Test()]
         public void Aged_Brie()
         {
-            IList<IItem> Items = new List<IItem> { new Item("Aged Brie", 10, 1 ) };
+            IList<IItem> Items = new List<IItem> { new SpecialItem(new AgedBrieToken(), 10, 1 ) };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual("Aged Brie", Items[0].Name);
@@ -44,9 +44,20 @@ namespace GildedRose
         }
 
         [Test()]
+        public void Aged_Brie_outdated()
+        {
+            IList<IItem> Items = new List<IItem> { new SpecialItem(new AgedBrieToken(), 0, 2) };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.AreEqual("Aged Brie", Items[0].Name);
+            Assert.AreEqual(-1, Items[0].SellIn);
+            Assert.AreEqual(4, Items[0].Quality);
+        }
+
+        [Test()]
         public void Aged_Brie_Higthest_Quality()
         {
-            IList<IItem> Items = new List<IItem> { new Item ("Aged Brie", 10, 50) };
+            IList<IItem> Items = new List<IItem> { new SpecialItem(new AgedBrieToken(), 10, 50) };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual("Aged Brie", Items[0].Name);
@@ -60,7 +71,7 @@ namespace GildedRose
         [Test()]
         public void Aged_Brie_Higthest_Quality_outdated()
         {
-            IList<IItem> Items = new List<IItem> { new Item("Aged Brie", -1, 50) };
+            IList<IItem> Items = new List<IItem> { new SpecialItem(new AgedBrieToken(), -1, 50) };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual("Aged Brie", Items[0].Name);
@@ -93,7 +104,7 @@ namespace GildedRose
         [Test()]
         public void Backstage()
         {
-            IList<IItem> Items = new List<IItem> { new Item("Backstage passes to a TAFKAL80ETC concert", 15, 1) };
+            IList<IItem> Items = new List<IItem> { new SpecialItem(new BackstageToken(), 15, 1) };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual("Backstage passes to a TAFKAL80ETC concert", Items[0].Name);
@@ -104,7 +115,7 @@ namespace GildedRose
         [Test()]
         public void Backstage_Close_To_Date()
         {
-            IList<IItem> Items = new List<IItem> { new Item("Backstage passes to a TAFKAL80ETC concert", 3, 30) };
+            IList<IItem> Items = new List<IItem> { new SpecialItem(new BackstageToken(), 3, 30) };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual("Backstage passes to a TAFKAL80ETC concert", Items[0].Name);
@@ -115,7 +126,7 @@ namespace GildedRose
         [Test()]
         public void Backstage_outdated()
         {
-            IList<IItem> Items = new List<IItem> { new Item("Backstage passes to a TAFKAL80ETC concert", -1, 50) };
+            IList<IItem> Items = new List<IItem> { new SpecialItem(new BackstageToken(), -1, 50) };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual("Backstage passes to a TAFKAL80ETC concert", Items[0].Name);
