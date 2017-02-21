@@ -2,10 +2,10 @@
   <MonoDevelop.Ide.ItemProperties.Kata__Refactoring__GildedRose PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Kata_Refactoring_GildedRose État">
     <Files>
-      <File FileName="Kata_Refactoring_GildedRose/GildedRose.cs" Line="82" Column="42" />
+      <File FileName="Kata_Refactoring_GildedRose/GildedRose.cs" Line="107" Column="33" />
       <File FileName="Kata_Refactoring_GildedRose/ApprovalTest.cs" Line="28" Column="2" />
-      <File FileName="Kata_Refactoring_GildedRose/TextTestFixture.cs" Line="1" Column="1" />
-      <File FileName="Kata_Refactoring_GildedRose/GildedRoseTest.cs" Line="112" Column="31" />
+      <File FileName="Kata_Refactoring_GildedRose/TextTestFixture.cs" Line="25" Column="14" />
+      <File FileName="Kata_Refactoring_GildedRose/GildedRoseTest.cs" Line="85" Column="67" />
       <File FileName="Kata_Refactoring_GildedRose État" />
     </Files>
     <Pads>
@@ -15,7 +15,7 @@
             <Node name="Kata_Refactoring_GildedRose" expanded="True">
               <Node name="GildedRose" expanded="True">
                 <Node name="GildedRoseTest" expanded="True">
-                  <Node name="Backstage_Close_To_Date" selected="True" />
+                  <Node name="wow_Sulfuras" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -26,7 +26,9 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/gaeldupire/Projects/Kata_Refactoring_GildedRose/Kata_Refactoring_GildedRose/GildedRose.cs" relfile="Kata_Refactoring_GildedRose/GildedRose.cs" line="19" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
