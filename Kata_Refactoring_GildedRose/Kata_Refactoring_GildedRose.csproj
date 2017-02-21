@@ -47,6 +47,12 @@
     <Compile Include="GildedRose.cs" />
     <Compile Include="GildedRoseTest.cs" />
     <Compile Include="TextTestFixture.cs" />
+    <Compile Include="SpecialItemToken.cs" />
+    <Compile Include="IQualityUpdater.cs" />
+    <Compile Include="IItem.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="Sulfuras.cs" />
+    <Compile Include="SpecialItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
