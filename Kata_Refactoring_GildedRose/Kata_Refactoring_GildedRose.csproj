@@ -54,6 +54,8 @@
     <Compile Include="Sulfuras.cs" />
     <Compile Include="SpecialItem.cs" />
     <Compile Include="BackstageState.cs" />
+    <Compile Include="BasicItem.cs" />
+    <Compile Include="GildedRoseRefactoredTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

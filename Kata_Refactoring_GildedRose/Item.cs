@@ -1,26 +1,63 @@
-using System;
-using System.Collections.Generic;
-
 namespace GildedRose
 {
-
-    public class Item : BaseItem
+    public class Item
     {
-        public Item() { }
+        public string Name { get; set; }
 
-        public Item(string name, int sellIn, int quality)
-            : base(name, sellIn, quality) { }
+        public int SellIn { get; set; }
 
-        public override void Update()
-        {
-            UpdateSellIn();
-            Quality -= GetSellInModifier();
-        }
-
-        private int GetSellInModifier()
-        {
-            return SellIn < 0 ? 2 : 1;
-        }
+        public int Quality { get; set; }
     }
 
+    public class IItemAdapter
+    {
+        IItem _internalItem;
+
+        public IItemAdapter(Item item)
+        {
+            _internalItem = ToIItem(item);
+        }
+        public IItemAdapter UpdateQuality()
+        {
+            _internalItem.Update();
+            return this;
+        }
+
+        public Item GetItem()
+        {
+            return FromIItem(_internalItem);
+        }
+
+        public static Item UpdateQuality(Item item)
+        {
+            var adapter = (new IItemAdapter(item));
+            return adapter.UpdateQuality().GetItem();
+        }
+
+        public static IItem ToIItem(Item item)
+        {
+            switch (item.Name)
+            {
+                case "Sulfuras, Hand of Ragnaros":
+                    return new Sulfuras(item.SellIn);
+                case "Aged Brie":
+                    return new SpecialItem(new AgedBrieToken(), item.SellIn, item.Quality);
+                case "Backstage passes to a TAFKAL80ETC concert":
+                    return new SpecialItem(new BackstageToken(), item.SellIn, item.Quality);
+                default:
+                    return new BasicItem(item.Name, item.SellIn, item.Quality);
+            }
+        }
+
+        public static Item FromIItem(IItem item)
+        {
+            return new Item()
+            {
+                Name = item.Name,
+                SellIn = item.SellIn,
+                Quality = item.Quality
+            };
+        }
+
+    }
 }

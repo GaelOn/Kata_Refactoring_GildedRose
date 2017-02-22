@@ -1,12 +1,11 @@
-using System;
 using System.Collections.Generic;
 
 namespace GildedRose
 {
     class GildedRose
     {
-        IList<IItem> Items;
-        public GildedRose(IList<IItem> Items)
+        IList<Item> Items;
+        public GildedRose(IList<Item> Items)
         {
             this.Items = Items;
         }
@@ -15,7 +14,7 @@ namespace GildedRose
         {
             for (var i = 0; i < Items.Count; i++)
             {
-                Items[i].Update();
+                Items[i] = IItemAdapter.UpdateQuality( Items[i]);
             }
         }
     }

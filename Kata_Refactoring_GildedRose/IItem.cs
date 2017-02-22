@@ -41,5 +41,4 @@ namespace GildedRose
             SellIn -= 1;
         }
     }
-
 }
