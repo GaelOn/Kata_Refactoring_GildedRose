@@ -1,3 +1,5 @@
+using System;
+
 namespace GildedRose
 {
     public interface IQualityUpdater
@@ -17,22 +19,8 @@ namespace GildedRose
     {
         public int ComputeQuality(IItem item)
         {
-            if (item.SellIn < 0)
-            {
-                return 0;
-            }
-
-            var temp = item.Quality + 1;
-            if (item.SellIn < 10)
-            {
-                temp += 1;
-            }
-            if (item.SellIn < 5)
-            {
-                temp += 1;
-            }
-            return temp;
+            return (new ConcertTicketBuyJustSaveTheDate()).UpdateState(item)
+                                                          .ComputeQuality(item);
         }
     }
-
 }
