@@ -2,11 +2,11 @@ namespace GildedRose
 {
     public interface IItem
     {
-        string Name { get; set; }
+        string Name { get; }
 
-        int SellIn { get; set; }
+        int SellIn { get; }
 
-        int Quality { get; set; }
+        int Quality { get; }
 
         void Update();
     }
@@ -23,16 +23,16 @@ namespace GildedRose
             _quality = quality;
         }
 
-        public string Name { get; set; }
+        public string Name { get; protected set; }
         public int Quality
         {
             get { return _quality; }
-            set
+            protected set
             {
                 _quality = value < 0 ? 0 : value > 50 ? 50 : value;
             }
         }
-        public int SellIn { get; set; }
+        public int SellIn { get; protected set; }
 
         public abstract void Update();
 

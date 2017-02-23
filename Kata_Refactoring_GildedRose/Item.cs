@@ -45,6 +45,10 @@ namespace GildedRose
                 case "Backstage passes to a TAFKAL80ETC concert":
                     return new SpecialItem(new BackstageToken(), item.SellIn, item.Quality);
                 default:
+                    if (item.Name.StartsWith("Conjured", System.StringComparison.Ordinal))
+                    {
+                        return new ConjuredItem(item.Name, item.SellIn, item.Quality);
+                    }
                     return new BasicItem(item.Name, item.SellIn, item.Quality);
             }
         }

@@ -125,11 +125,31 @@ namespace GildedRose
         [Test()]
         public void Conjured_man_Cake_SellIn_0()
         {
-            var Items = new BasicItem("Conjured Mana Cake", 0, 3);
+            var Items = new ConjuredItem("Conjured Mana Cake", 0, 3);
             Items.Update();
             Assert.AreEqual("Conjured Mana Cake", Items.Name);
             Assert.AreEqual(-1, Items.SellIn);
+            Assert.AreEqual(0, Items.Quality);
+        }
+
+        [Test()]
+        public void Conjured_man_Cake()
+        {
+            var Items = new ConjuredItem("Conjured Mana Cake", 5, 3);
+            Items.Update();
+            Assert.AreEqual("Conjured Mana Cake", Items.Name);
+            Assert.AreEqual(4, Items.SellIn);
             Assert.AreEqual(1, Items.Quality);
+        }
+
+        [Test()]
+        public void Conjured_man_Cake_outdated()
+        {
+            var Items = new ConjuredItem("Conjured Mana Cake", -2, 10);
+            Items.Update();
+            Assert.AreEqual("Conjured Mana Cake", Items.Name);
+            Assert.AreEqual(-3, Items.SellIn);
+            Assert.AreEqual(6, Items.Quality);
         }
     }
 }

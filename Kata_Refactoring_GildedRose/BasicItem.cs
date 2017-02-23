@@ -15,7 +15,7 @@ namespace GildedRose
             Quality -= GetSellInModifier();
         }
 
-        private int GetSellInModifier()
+        protected virtual int GetSellInModifier()
         {
             return SellIn < 0 ? 2 : 1;
         }
